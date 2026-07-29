@@ -1,0 +1,91 @@
+name: Verification
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verification-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install backend dependencies
+        run: python -m venv .venv && .venv/bin/python -m pip install --upgrade pip && .venv/bin/python -m pip install -e '.[test]'
+
+      - name: Backend tests
+        run: .venv/bin/pytest -q --strict-config --strict-markers
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install frontend dependencies
+        working-directory: web
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        working-directory: web
+        run: npx playwright install --with-deps chromium
+
+      - name: Frontend unit tests
+        working-directory: web
+        run: npm test -- --run
+
+      - name: Frontend production build
+        working-directory: web
+        run: npm run build
+
+      - name: Verify self-contained production assets
+        working-directory: web
+        run: npm run verify:assets
+
+      - name: Dependency audit (informational)
+        working-directory: web
+        run: |
+          npm audit --omit=dev --json > npm-audit.json || true
+          node -e 'const report = require("./npm-audit.json"); const v = report.metadata?.vulnerabilities ?? {}; console.log(`npm audit: ${v.total ?? 0} total, ${v.high ?? 0} high, ${v.critical ?? 0} critical`)' 
+        continue-on-error: true
+
+      - name: Upload dependency audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-audit-report
+          path: web/npm-audit.json
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Playwright E2E
+        working-directory: web
+        run: npm run test:e2e
+
+      - name: Upload Playwright diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-diagnostics
+          path: |
+            web/test-results/
+            web/playwright-report/
+          if-no-files-found: ignore
+          retention-days: 7

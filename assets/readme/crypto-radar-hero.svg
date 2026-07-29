@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="1000" height="520" role="img" aria-labelledby="title desc">
+  <title id="title">Crypto Radar: evidence to validation</title>
+  <desc id="desc">A dark analyst-style pipeline showing public evidence flowing into explainable scores, forward validation, and human review.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07111f"/><stop offset="1" stop-color="#0c1b2e"/></linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#37d6d0"/><stop offset="1" stop-color="#73e6a7"/></linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#9bd5e6" stroke-opacity=".08"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#73e6a7"/></marker>
+  </defs>
+  <rect width="1000" height="520" rx="28" fill="url(#bg)"/>
+  <rect width="1000" height="520" rx="28" fill="url(#grid)"/>
+  <path d="M38 64H962" stroke="#9bd5e6" stroke-opacity=".18"/>
+  <text x="52" y="50" fill="#73e6a7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="15" font-weight="700" letter-spacing="3">READ-ONLY MARKET INTELLIGENCE</text>
+  <text x="52" y="122" fill="#f4fbff" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="54" font-weight="800" letter-spacing="-1">CRYPTO RADAR</text>
+  <text x="55" y="155" fill="#b8c9d8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="19">From public evidence to an explainable, human-reviewed decision.</text>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+    <g transform="translate(52 205)">
+      <rect width="420" height="112" rx="16" fill="#0d2639" stroke="#2d6178"/>
+      <circle cx="30" cy="32" r="10" fill="#37d6d0" filter="url(#glow)"/>
+      <text x="54" y="38" fill="#f4fbff" font-size="22" font-weight="700">PUBLIC EVIDENCE</text>
+      <text x="22" y="75" fill="#9eb6c8" font-size="17">market · social · RSS · GitHub · source URLs</text>
+    </g>
+    <g transform="translate(540 205)">
+      <rect width="420" height="112" rx="16" fill="#112d3b" stroke="#3a8a88"/>
+      <text x="22" y="38" fill="#f4fbff" font-size="22" font-weight="700">EXPLAINABLE SCORE</text>
+      <text x="22" y="75" fill="#9eb6c8" font-size="17">fact · basis · confidence · −10 · 0 · +10</text>
+    </g>
+    <g transform="translate(52 365)">
+      <rect width="420" height="112" rx="16" fill="#142b42" stroke="#4d7398"/>
+      <text x="22" y="38" fill="#f4fbff" font-size="22" font-weight="700">FORWARD VALIDATION</text>
+      <text x="22" y="75" fill="#f6c76d" font-size="17">1h · 6h · 1d · 1w · ready · pending · data gap</text>
+    </g>
+    <g transform="translate(540 365)">
+      <rect width="420" height="112" rx="16" fill="#18283f" stroke="#687ca4"/>
+      <text x="22" y="38" fill="#f4fbff" font-size="22" font-weight="700">HUMAN REVIEW</text>
+      <text x="22" y="75" fill="#9eb6c8" font-size="17">evidence preserved · no auto-trade</text>
+    </g>
+  </g>
+
+  <path d="M472 261H530" stroke="url(#cyan)" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M250 317V355" stroke="url(#cyan)" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M750 317V355" stroke="url(#cyan)" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M472 421H530" stroke="url(#cyan)" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <g transform="translate(52 503)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="14">
+    <circle cx="7" cy="-5" r="5" fill="#73e6a7"/>
+    <text x="22" y="0" fill="#b8c9d8">BTC · ETH · SOL · HYPE · ZEC</text>
+    <text x="900" y="0" fill="#73e6a7" text-anchor="end" font-weight="700">AUTO_TRADE: FALSE</text>
+  </g>
+</svg>

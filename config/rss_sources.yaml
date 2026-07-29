@@ -1,0 +1,97 @@
+sources:
+  - name: Bitcoin Optech
+    feed_url: https://bitcoinops.org/feed.xml
+    tier: technical
+    assets: [BTC]
+  - name: Bitcoin Core releases
+    feed_url: https://github.com/bitcoin/bitcoin/releases.atom
+    tier: technical
+    assets: [BTC]
+  - name: Ethereum Foundation
+    feed_url: https://blog.ethereum.org/en/feed.xml
+    tier: primary
+    assets: [ETH]
+  - name: Ethereum Research
+    feed_url: https://ethresear.ch/latest.rss
+    tier: technical
+    assets: [ETH]
+  - name: Geth releases
+    feed_url: https://github.com/ethereum/go-ethereum/releases.atom
+    tier: technical
+    assets: [ETH]
+  - name: Solana News
+    feed_url: https://solana.com/news/rss.xml
+    tier: primary
+    assets: [SOL]
+  - name: Anza releases
+    feed_url: https://github.com/anza-xyz/agave/releases.atom
+    tier: technical
+    assets: [SOL]
+  - name: Electric Coin Company
+    feed_url: https://electriccoin.co/blog/feed/
+    tier: primary
+    assets: [ZEC]
+  - name: Zcash Foundation
+    feed_url: https://zfnd.org/feed/
+    tier: primary
+    assets: [ZEC]
+  - name: Zcash releases
+    feed_url: https://github.com/zcash/zcash/releases.atom
+    tier: technical
+    assets: [ZEC]
+  - name: Zebra releases
+    feed_url: https://github.com/ZcashFoundation/zebra/releases.atom
+    tier: technical
+    assets: [ZEC]
+  - name: CoinDesk
+    feed_url: https://www.coindesk.com/arc/outboundfeeds/rss
+    tier: secondary
+    assets: [BTC, ETH, SOL, HYPE, ZEC]
+  - name: The Block
+    feed_url: https://www.theblock.co/rss.xml
+    tier: secondary
+    assets: [BTC, ETH, SOL, HYPE, ZEC]
+  - name: Unchained
+    feed_url: https://unchainedcrypto.com/feed/
+    tier: secondary
+    assets: [BTC, ETH, SOL, HYPE, ZEC]
+  - name: Reddit r/Bitcoin
+    feed_url: https://www.reddit.com/r/Bitcoin/.rss
+    tier: discovery
+    assets: [BTC]
+  - name: Reddit r/ethereum
+    feed_url: https://www.reddit.com/r/ethereum/.rss
+    tier: discovery
+    assets: [ETH]
+  - name: Reddit r/solana
+    feed_url: https://www.reddit.com/r/solana/.rss
+    tier: discovery
+    assets: [SOL]
+  - name: Reddit r/Hyperliquid
+    feed_url: https://www.reddit.com/r/Hyperliquid/.rss
+    tier: discovery
+    assets: [HYPE]
+  - name: Reddit r/zec
+    feed_url: https://www.reddit.com/r/zec/.rss
+    tier: discovery
+    assets: [ZEC]
+  - name: Reddit r/CryptoCurrency
+    feed_url: https://www.reddit.com/r/CryptoCurrency/.rss
+    tier: discovery
+    assets: [BTC, ETH, SOL, HYPE, ZEC]
+  - name: Reddit r/CryptoMarkets
+    feed_url: https://www.reddit.com/r/CryptoMarkets/.rss
+    tier: discovery
+    assets: [BTC, ETH, SOL, HYPE, ZEC]
+  - name: Reddit r/defi
+    feed_url: https://www.reddit.com/r/defi/.rss
+    tier: discovery
+    assets: [ETH, SOL, HYPE, ZEC]
+  - name: Reddit r/altcoin
+    feed_url: https://www.reddit.com/r/altcoin/.rss
+    tier: discovery
+    assets: [BTC, ETH, SOL, HYPE, ZEC]
+  - name: Reddit r/BitcoinTechnology
+    feed_url: https://www.reddit.com/r/BitcoinTechnology/.rss
+    tier: discovery
+    assets: [BTC]
