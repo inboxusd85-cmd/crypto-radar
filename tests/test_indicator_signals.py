@@ -36,4 +36,3 @@ def test_indicator_signal_contains_timeframe_and_explainable_measurements() -> N
     assert "TD Sequential (книга DeMark, Setup→Intersection→Countdown)" in signal.basis
     assert signal.auto_trade is False
     assert signal.measurements["indicator_weights"] == {"demark": 2, "rei": 1, "volume": 1, "td_sequential": 2}
-

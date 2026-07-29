@@ -63,7 +63,7 @@ jobs:
         working-directory: web
         run: |
           npm audit --omit=dev --json > npm-audit.json || true
-          node -e 'const report = require("./npm-audit.json"); const v = report.metadata?.vulnerabilities ?? {}; console.log(`npm audit: ${v.total ?? 0} total, ${v.high ?? 0} high, ${v.critical ?? 0} critical`)' 
+          node -e 'const report = require("./npm-audit.json"); const v = report.metadata?.vulnerabilities ?? {}; console.log(`npm audit: ${v.total ?? 0} total, ${v.high ?? 0} high, ${v.critical ?? 0} critical`)'
         continue-on-error: true
 
       - name: Upload dependency audit report
