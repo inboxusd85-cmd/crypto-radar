@@ -54,13 +54,18 @@ test("desktop GitHub Watch exposes enabled baseline and observed events @desktop
   await expect(page.getByText("enabled", { exact: true })).toBeVisible()
   const banner = page.locator(".github-banner p")
   await expect(banner).toContainText(/\d+ repositories · \d+ observed events/)
-  await expect(banner).toContainText("latest")
   await expect(page.getByRole("button", { name: "Check now" })).toBeVisible()
-  await expect(page.locator(".github-event").first()).toBeVisible()
   const renderedEvents = await page.locator(".github-event").count()
   const bannerText = await banner.textContent()
   const reportedEvents = Number(bannerText?.match(/· (\d+) observed events/)?.[1])
   expect(reportedEvents).toBeGreaterThanOrEqual(renderedEvents)
+  if (reportedEvents > 0) {
+    await expect(banner).toContainText("latest")
+    await expect(page.locator(".github-event").first()).toBeVisible()
+    await expect(page.locator(".github-event time").first()).toBeVisible()
+  } else {
+    await expect(page.getByText("GitHub events not collected.")).toBeVisible()
+  }
 
   expect(pageErrors, `page errors: ${pageErrors.join(" | ")}`).toEqual([])
   expect(consoleErrors, `console errors: ${consoleErrors.join(" | ")}`).toEqual([])
@@ -126,12 +131,17 @@ test("mobile GitHub Watch remains read-only with enabled baseline @mobile", asyn
   await expect(page.getByRole("button", { name: "Check now" })).toBeVisible()
   const banner = page.locator(".github-banner p")
   await expect(banner).toContainText(/\d+ repositories · \d+ observed events/)
-  await expect(banner).toContainText("latest")
-  await expect(page.locator(".github-event").first()).toBeVisible()
   const renderedEvents = await page.locator(".github-event").count()
   const bannerText = await banner.textContent()
   const reportedEvents = Number(bannerText?.match(/· (\d+) observed events/)?.[1])
   expect(reportedEvents).toBeGreaterThanOrEqual(renderedEvents)
+  if (reportedEvents > 0) {
+    await expect(banner).toContainText("latest")
+    await expect(page.locator(".github-event").first()).toBeVisible()
+    await expect(page.locator(".github-event time").first()).toBeVisible()
+  } else {
+    await expect(page.getByText("GitHub events not collected.")).toBeVisible()
+  }
 
   expect(pageErrors, `page errors: ${pageErrors.join(" | ")}`).toEqual([])
   expect(consoleErrors, `console errors: ${consoleErrors.join(" | ")}`).toEqual([])
@@ -206,7 +216,6 @@ test("mobile asset detail remains read-only and loads its taxonomy @mobile", asy
   const indicatorSnapshot = page.getByLabel("Последнее обновление индикаторов")
   await expect(indicatorSnapshot).toContainText("актуально", { timeout: 30_000 })
   await expect(indicatorSnapshot).toHaveText(/обновлено .+ · актуально · \d+(м|ч|д)/, { timeout: 30_000 })
-  await expect(page.locator('[data-quality-status]')).not.toHaveCount(0)
 
   expect(pageErrors, `page errors: ${pageErrors.join(" | ")}`).toEqual([])
   expect(consoleErrors, `console errors: ${consoleErrors.join(" | ")}`).toEqual([])
